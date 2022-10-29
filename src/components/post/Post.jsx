@@ -12,7 +12,7 @@ export default function Post() {
               src="/assets/person/1.jpeg"
               alt=""
             />
-            <span className="postUsername">Alejandro Cabrera</span>
+            <span className="postUsername">Pepita</span>
             <span className="postDate">5 mins ago</span>
           </div>
           <div className="postTopRight">
