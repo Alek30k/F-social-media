@@ -1,26 +1,34 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
-  user: null,
-  isFecthing: false,
+  user: {
+    _id: "63656dbcd8892be345cf2b84",
+    username: "john",
+    email: "john@gmail.com",
+    profilePicture: "person/2.jpeg",
+    coverPicture: "",
+    followers: [],
+    followings: [],
+  },
+  isFetching: false,
   error: false,
 };
 
-export const AutContext = createContext(INITIAL_STATE);
+export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
   return (
-    <AutContext.Provider
+    <AuthContext.Provider
       value={{
         user: state.user,
-        isFecthing: state.isFecthing,
+        isFetching: state.isFetching,
         error: state.error,
         dispatch,
       }}
     >
       {children}
-    </AutContext.Provider>
+    </AuthContext.Provider>
   );
 };
