@@ -10,7 +10,7 @@ import { Add, Remove } from "@material-ui/icons";
 
 export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [friends, setFriends] = useState({});
+  const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
@@ -105,7 +105,7 @@ export default function Rightbar({ user }) {
         </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
-          {friends?.map((friend) => (
+          {friends.map((friend) => (
             <Link
               to={"/profile/" + friend.username}
               style={{ textDecoration: "none" }}
