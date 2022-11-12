@@ -4,7 +4,6 @@ import Online from "../online/Online";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { StayCurrentLandscape } from "@material-ui/icons";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Add, Remove } from "@material-ui/icons";
