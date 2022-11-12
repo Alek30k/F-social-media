@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import Post from "../post/Post";
 import Share from "../share/Share";
-import axios from "axios";
 import "./feed.css";
+import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 
 export default function Feed({ username }) {
@@ -12,20 +12,13 @@ export default function Feed({ username }) {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
-        ? await axios.get(
-            "https://feisbuk-app.herokuapp.com/api/posts/profile/" + username
-          )
-        : await axios.get(
-            "https://feisbuk-app.herokuapp.com/api/posts/timeline/" + user._id
-          );
-      if (user) return <h2>Loading...</h2>;
-      if (!res) return <h2>No hay data</h2>;
+        ? await axios.get("/posts/profile/" + username)
+        : await axios.get("posts/timeline/" + user._id);
       setPosts(
         res.data.sort((p1, p2) => {
           return new Date(p2.createdAt) - new Date(p1.createdAt);
         })
       );
-      //console.log(Array.isArray(res.data));
     };
     fetchPosts();
   }, [username, user._id]);
