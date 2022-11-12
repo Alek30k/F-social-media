@@ -12,8 +12,12 @@ export default function Feed({ username }) {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
-        ? await axios.get("/posts/profile/" + username)
-        : await axios.get("posts/timeline/" + user._id);
+        ? await axios.get(
+            "https://feisbuk-app.herokuapp.com/api/posts/profile/" + username
+          )
+        : await axios.get(
+            "https://feisbuk-app.herokuapp.com/api/posts/timeline/" + user._id
+          );
       if (user) return <h2>Loading...</h2>;
       if (!res) return <h2>No hay data</h2>;
       setPosts(
