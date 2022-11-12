@@ -20,8 +20,7 @@ export default function Rightbar({ user }) {
     const getFriends = async () => {
       try {
         const friendList = await axios.get("/users/friends/" + user._id);
-        if (user) return <h2>Loading...</h2>;
-        if (!friendList) return <h2>No hay data</h2>;
+
         setFriends(friendList.data);
       } catch (err) {
         console.log(err);
