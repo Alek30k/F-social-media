@@ -33,15 +33,21 @@ export default function Rightbar({ user }) {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put(`/users/${user._id}/unfollow`, {
-          userId: currentUser._id,
-        });
+        await axios.put(
+          `https://feisbuk-app.herokuapp.com/api/users/${user._id}/unfollow`,
+          {
+            userId: currentUser._id,
+          }
+        );
 
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`/users/${user._id}/follow`, {
-          userId: currentUser._id,
-        });
+        await axios.put(
+          `https://feisbuk-app.herokuapp.com/api/users/${user._id}/follow`,
+          {
+            userId: currentUser._id,
+          }
+        );
         dispatch({ type: "FOLLOW", payload: user._id });
       }
       setFollowed(!followed);

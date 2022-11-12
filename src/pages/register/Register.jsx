@@ -21,7 +21,10 @@ export default function Register() {
         password: password.current.value,
       };
       try {
-        await axios.post("/auth/register", user);
+        await axios.post(
+          "https://feisbuk-app.herokuapp.com/api/auth/register",
+          user
+        );
         history.push("/login");
       } catch (error) {
         console.log(error);
