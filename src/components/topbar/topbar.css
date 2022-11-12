@@ -60,6 +60,7 @@
   margin-right: 10px;
   font-style: 14px;
   cursor: pointer;
+  color: #1877f2;
 }
 
 .topbarIcons {
@@ -93,4 +94,46 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  z-index: 999;
+  display: none;
+  justify-content: end;
+  align-items: start;
+}
+
+.modal__dialog {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  width: 160px;
+  height: 100px;
+  margin: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal__dialog img {
+  margin-right: 12px;
+}
+
+.modal-open {
+  display: grid;
+}
+
+.modalAvatar {
+  color: rgb(26, 19, 19);
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 20px;
 }

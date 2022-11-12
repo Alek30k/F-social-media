@@ -35,6 +35,7 @@ export default function Rightbar({ user }) {
         await axios.put(`/users/${user._id}/unfollow`, {
           userId: currentUser._id,
         });
+
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
         await axios.put(`/users/${user._id}/follow`, {
@@ -89,7 +90,7 @@ export default function Rightbar({ user }) {
             <span className="rightbarInValue">
               {user.relationship === 1
                 ? "Single"
-                : user.relationship === 1
+                : user.relationship === 2
                 ? "Married"
                 : "-"}
             </span>

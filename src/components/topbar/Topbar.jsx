@@ -1,12 +1,34 @@
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Logout } from "../../context/AuthActions";
 
 export default function Topbar() {
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const history = useHistory();
+
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
+
+  const handleModalDialogClick = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleLogout = () => {
+    dispatch(Logout());
+    history.push("/login");
+  };
 
   return (
     <div className="topbarContainer">
@@ -40,7 +62,7 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
-        <Link to={`/profile/${user.username}`}>
+        <div onClick={openModal}>
           <img
             src={
               user.profilePicture
@@ -50,7 +72,44 @@ export default function Topbar() {
             alt=""
             className="topbarImg"
           />
-        </Link>
+        </div>
+        <div
+          className={`modal ${isOpenModal && "modal-open"}`}
+          onClick={closeModal}
+        >
+          <div className="modal__dialog" onClick={handleModalDialogClick}>
+            <div className="link">
+              <Link
+                to={`/profile/${user.username}`}
+                style={{
+                  textDecoration: "none",
+                  color: "rgb(26, 19, 19)",
+                  fontSize: 18,
+                  fontWeight: 500,
+                }}
+              >
+                <div>
+                  <img
+                    src={
+                      user.profilePicture
+                        ? PF + user.profilePicture
+                        : PF + "person/noAvatar.png"
+                    }
+                    alt=""
+                    className="topbarImg"
+                  />
+                  {user.username}
+                </div>
+              </Link>
+            </div>
+            {isOpenModal && (
+              <div className="modalAvatar" onClick={handleLogout}>
+                <LogoutIcon />
+                Logout
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
