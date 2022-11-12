@@ -35,7 +35,7 @@ export default function Share() {
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await axios.post("https://feisbuk-app.herokuapp.com/api/posts", newPost);
       window.location.reload();
     } catch (err) {}
   };
