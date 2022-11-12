@@ -40,5 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://feisbuk-app.herokuapp.com/api/"
+  "proxy": "https://feisbuk-app.herokuapp.com/api"
 }
