@@ -32,6 +32,10 @@ export default function Register() {
     }
   };
 
+  const handleLogin = () => {
+    history.push("/login");
+  };
+
   return (
     <div className="register">
       <div className="registerWrapper">
@@ -75,7 +79,9 @@ export default function Register() {
             <button className="registerButton" type="submit">
               Sign Up
             </button>
-            <button className="registerRegisterButton">Log into Account</button>
+            <button className="registerRegisterButton" onClick={handleLogin}>
+              Log into Account
+            </button>
           </form>
         </div>
       </div>
