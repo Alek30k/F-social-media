@@ -31,7 +31,7 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("/upload", data);
+        await axios.post("https://feisbuk-app.herokuapp.com/api/upload", data);
       } catch (err) {}
     }
     try {
