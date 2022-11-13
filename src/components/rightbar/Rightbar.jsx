@@ -126,7 +126,7 @@ export default function Rightbar({ user }) {
                   style={{
                     textDecoration: "none",
                     color: "black",
-                    marginTop: "20",
+                    marginTop: 20,
                   }}
                 >
                   {friend.username}
