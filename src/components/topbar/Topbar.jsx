@@ -4,16 +4,14 @@ import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
-import { useHistory, useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Logout } from "../../context/AuthActions";
 
 export default function Topbar() {
-  const navigate = useNavigate();
   const { user, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpenModal, setIsOpenModal] = useState(false);
   const history = useHistory();
-  const [q, setQ] = useState("");
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -43,7 +41,6 @@ export default function Topbar() {
         <div className="searchbar">
           <Search className="searchIcon" />
           <input placeholder="Search on Feisbuk" className="searchInput" />
-          onClick={() => navigate(`/search?q=${q}`)}
         </div>
       </div>
       <div className="topbarRight">
