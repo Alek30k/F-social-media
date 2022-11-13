@@ -123,7 +123,11 @@ export default function Rightbar({ user }) {
                 />
                 <span
                   className="rightbarFollowingName"
-                  style={{ textDecoration: "none" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    marginTop: "20",
+                  }}
                 >
                   {friend.username}
                 </span>
