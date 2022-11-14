@@ -12,6 +12,7 @@ export default function Topbar() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpenModal, setIsOpenModal] = useState(false);
   const history = useHistory();
+  const [friends, setFriends] = useState("");
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -40,7 +41,11 @@ export default function Topbar() {
       <div className="topbarCenter">
         <div className="searchbar">
           <Search className="searchIcon" />
-          <input placeholder="Search on Feisbuk" className="searchInput" />
+          <input
+            placeholder="Search on Feisbuk"
+            className="searchInput"
+            onChange={(e) => setFriends(e.target.value)}
+          />
         </div>
       </div>
       <div className="topbarRight">
