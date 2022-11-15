@@ -96,6 +96,10 @@
   cursor: pointer;
 }
 
+.containerAvatar {
+  margin-left: 45px;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -105,16 +109,15 @@
   z-index: 999;
   display: none;
   justify-content: end;
-  align-items: start;
 }
 
 .modal__dialog {
-  background-color: #fff;
+  background-color: rgb(252, 252, 252);
   border-radius: 10px;
-  padding: 10px;
-  width: 160px;
-  height: 100px;
-  margin: 50px 20px;
+  border: 1px solid rgb(231, 228, 228);
+  width: 190px;
+  height: 125px;
+  margin: 26% -10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -129,11 +132,27 @@
 }
 
 .modalAvatar {
-  color: rgb(26, 19, 19);
   display: flex;
-  gap: 20px;
   font-size: 18px;
   font-weight: 500;
+  color: rgb(26, 19, 19);
+  padding: 20px 0;
   cursor: pointer;
-  margin-top: 20px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modalAvatar:hover {
+  background-color: #f1ecec;
+}
+
+.avatarName {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.avatarName:hover {
+  background-color: #f1ecec;
 }
