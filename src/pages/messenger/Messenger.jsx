@@ -3,8 +3,29 @@ import Topbar from "../../components/topbar/Topbar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
+import { useContext, useState, useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 
 export default function Messenger() {
+  const [conversations, setConversations] = useState([]);
+
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    const getConversations = async () => {
+      try {
+        const res = await axios.get(
+          "https://feisbuk-app.herokuapp.com/api/conversations/" + user._Id
+        );
+        console.log(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getConversations();
+  }, [user._id]);
+
   return (
     <>
       <Topbar />
@@ -12,12 +33,9 @@ export default function Messenger() {
         <div className="chatMenu">
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
-            <Conversation />
-            <Conversation />
-            <Conversation />
-            <Conversation />
-            <Conversation />
-            <Conversation />
+            {/* {conversations.map((c) => (
+              <Conversation />
+            ))} */}
           </div>
         </div>
         <div className="chatBox">
