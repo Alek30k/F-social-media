@@ -3,7 +3,7 @@ import Topbar from "../../components/topbar/Topbar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { io } from "socket.io-client";
@@ -13,15 +13,37 @@ export default function Messenger() {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
-  const [socket, setSocket] = useState(null);
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const [onlineUsers, setOnlineUsers] = useState([]);
+  const socket = useRef();
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
 
   useEffect(() => {
-    setSocket(io("ws://localhost:8900"));
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
   }, []);
 
-  console.log(socket);
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    socket.current.emit("addUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      setOnlineUsers(
+        user.followings.filter((f) => users.some((u) => u.userId === f))
+      );
+    });
+  }, [user]);
 
   useEffect(() => {
     const getConversations = async () => {
@@ -30,8 +52,8 @@ export default function Messenger() {
           "https://feisbuk-app.herokuapp.com/api/conversations/" + user._id
         );
         setConversations(res.data);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     };
     getConversations();
@@ -44,8 +66,8 @@ export default function Messenger() {
           "https://feisbuk-app.herokuapp.com/api/messages/" + currentChat?._id
         );
         setMessages(res.data);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
       }
     };
     getMessages();
@@ -58,15 +80,26 @@ export default function Messenger() {
       text: newMessage,
       conversationId: currentChat._id,
     };
+
+    const receiverId = currentChat.members.find(
+      (member) => member !== user._id
+    );
+
+    socket.current.emit("sendMessage", {
+      senderId: user._id,
+      receiverId,
+      text: newMessage,
+    });
+
     try {
       const res = await axios.post(
-        "https://feisbuk-app.herokuapp.com/api/messages/",
+        "https://feisbuk-app.herokuapp.com/api/messages",
         message
       );
       setMessages([...messages, res.data]);
       setNewMessage("");
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -82,7 +115,7 @@ export default function Messenger() {
           <div className="chatMenuWrapper">
             <input placeholder="Search for friends" className="chatMenuInput" />
             {conversations.map((c) => (
-              <div onClick={() => setCurrentChat(c)} key={c._id}>
+              <div onClick={() => setCurrentChat(c)}>
                 <Conversation conversation={c} currentUser={user} />
               </div>
             ))}
@@ -95,18 +128,14 @@ export default function Messenger() {
                 <div className="chatBoxTop">
                   {messages.map((m) => (
                     <div ref={scrollRef}>
-                      <Message
-                        key={m._id}
-                        message={m}
-                        own={m.sender === user._id}
-                      />
+                      <Message message={m} own={m.sender === user._id} />
                     </div>
                   ))}
                 </div>
                 <div className="chatBoxBottom">
                   <textarea
-                    placeholder="Write something..."
                     className="chatMessageInput"
+                    placeholder="write something..."
                     onChange={(e) => setNewMessage(e.target.value)}
                     value={newMessage}
                   ></textarea>
@@ -117,19 +146,18 @@ export default function Messenger() {
               </>
             ) : (
               <span className="noConversationText">
-                Open a conversation a start a chat.
+                Open a conversation to start a chat.
               </span>
             )}
           </div>
         </div>
         <div className="chatOnline">
           <div className="chatOnlineWrapper">
-            <ChatOnline />
-            <ChatOnline />
-            <ChatOnline />
-            <ChatOnline />
-            <ChatOnline />
-            <ChatOnline />
+            <ChatOnline
+              onlineUsers={onlineUsers}
+              currentId={user._id}
+              setCurrentChat={setCurrentChat}
+            />
           </div>
         </div>
       </div>
