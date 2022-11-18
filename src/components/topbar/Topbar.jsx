@@ -59,7 +59,7 @@ export default function Topbar() {
             <span className="topbarIconBadge">1</span>
           </div>
           <Link
-            to="/https://feisbuk-app.herokuapp.com/api/messenger"
+            to="/messenger"
             style={{ textDecoration: "none", color: "white" }}
           >
             <div className="topbarIconItem">
