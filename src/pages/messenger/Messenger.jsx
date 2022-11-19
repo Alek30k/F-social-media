@@ -151,7 +151,7 @@ export default function Messenger() {
             )}
           </div>
         </div>
-        <div className="chatOnline">
+        {/* <div className="chatOnline">
           <div className="chatOnlineWrapper">
             <ChatOnline
               onlineUsers={onlineUsers}
@@ -159,7 +159,7 @@ export default function Messenger() {
               setCurrentChat={setCurrentChat}
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
