@@ -65,7 +65,7 @@ export default function Rightbar({ user }) {
         <img className="rightbarAd" src="/assets/ad.png" alt="" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
+          {Users?.map((u) => (
             <Online key={u.id} user={u} />
           ))}
         </ul>
@@ -86,18 +86,18 @@ export default function Rightbar({ user }) {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInValue">{user.city}</span>
+            <span className="rightbarInValue">{user?.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInValue">{user.from}</span>
+            <span className="rightbarInValue">{user?.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
             <span className="rightbarInValue">
-              {user.relationship === 1
+              {user?.relationship === 1
                 ? "Single"
-                : user.relationship === 2
+                : user?.relationship === 2
                 ? "Married"
                 : "-"}
             </span>
@@ -129,7 +129,7 @@ export default function Rightbar({ user }) {
                     marginTop: 20,
                   }}
                 >
-                  {friend.username}
+                  {friend?.username}
                 </span>
               </div>
             </Link>
