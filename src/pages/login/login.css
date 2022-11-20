@@ -90,3 +90,17 @@
   font-weight: 500;
   cursor: pointer;
 }
+
+@media (max-width: 700px) {
+  .loginWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .loginLogo {
+    display: flex;
+    justify-content: center;
+  }
+  .loginDesc {
+    font-size: 18px;
+  }
+}
