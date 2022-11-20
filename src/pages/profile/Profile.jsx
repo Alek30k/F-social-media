@@ -6,6 +6,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import "./profile.css";
 import { useParams } from "react-router";
+import { AddPhotoAlternate } from "@material-ui/icons";
 
 export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;

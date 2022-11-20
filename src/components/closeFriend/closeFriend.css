@@ -7,7 +7,23 @@
 .sidebarFriendImg {
   width: 32px;
   height: 32px;
+  min-width: 32px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 664px) {
+  .sidebarFriend {
+    padding: 0 40%;
+  }
+  .sidebarFriendName {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .sidebarFriend {
+    display: none;
+  }
 }
