@@ -23,7 +23,7 @@
 }
 
 .rightbarAd {
-  width: 100%;
+  width: 80%;
   border-radius: 10px;
   margin: 30px 0;
 }
@@ -100,8 +100,16 @@
 .rightbarFollowButton:focus {
   outline: none;
 }
+@media (max-width: 850px) {
+  .rightbarAd {
+    display: none;
+  }
+  .birthdayContainer {
+    display: none;
+  }
+}
 
-@media (max-width: 800px) {
+@media (max-width: 650px) {
   .rightbarContainer {
     display: none;
   }
