@@ -66,6 +66,9 @@
   margin-right: 5px;
   cursor: pointer;
 }
+.likeCount {
+  margin-right: 5px;
+}
 
 .postCounter {
   font-size: 15px;
@@ -74,4 +77,10 @@
 .postCommentText {
   cursor: pointer;
   border-bottom: 1px dashed gray;
+}
+
+@media (max-width: 500px) {
+  .postLikeCounter {
+    display: none;
+  }
 }
