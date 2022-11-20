@@ -100,6 +100,15 @@
 .rightbarFollowButton:focus {
   outline: none;
 }
-/* .rightbarAd {
-  max-width: 50%;
-} */
+
+@media (max-width: 800px) {
+  .rightbarContainer {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .rightbarProfile {
+    display: none;
+  }
+}
