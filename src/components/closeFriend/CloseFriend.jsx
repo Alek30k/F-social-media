@@ -1,11 +1,29 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./closeFriend.css";
 
 export default function CloseFriend({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const res = await axios.get(
+        "https://feisbuk-app.herokuapp.com/api/users/"
+      );
+      setUsers(res.data);
+    };
+    fetchUsers();
+  }, []);
+
   return (
-    <li className="sidebarFriend">
-      <img className="sidebarFriendImg" src={PF + user.profilePicture} alt="" />
-      <span className="sidebarFriendName">{user.username}</span>
-    </li>
+    <div>
+      {users?.map((u) => (
+        <li className="sidebarFriend" key={u._id}>
+          <img className="sidebarFriendImg" src={u?.profilePicture} alt="" />
+          <span className="sidebarFriendName">{u?.username}</span>
+        </li>
+      ))}
+    </div>
   );
 }
