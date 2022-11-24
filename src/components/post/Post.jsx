@@ -47,9 +47,8 @@ export default function Post({ post }) {
               <img
                 className="postProfileImg"
                 src={
-                  user.profilePicture
-                    ? PF + user.profilePicture
-                    : PF + "person/noAvatar.png"
+                  user?.profilePicture ||
+                  "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
                 }
                 alt=""
               />

@@ -75,9 +75,7 @@ export default function Topbar() {
         <div onClick={openModal} className="openModal">
           <img
             src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
+              user?.profilePicture || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
             }
             alt=""
             className="topbarImg"
@@ -102,9 +100,8 @@ export default function Topbar() {
                   <div>
                     <img
                       src={
-                        user.profilePicture
-                          ? PF + user.profilePicture
-                          : PF + "person/noAvatar.png"
+                        user?.profilePicture ||
+                        "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
                       }
                       alt=""
                       className="topbarImg"

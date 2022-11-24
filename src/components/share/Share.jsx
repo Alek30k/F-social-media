@@ -30,7 +30,10 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("https://feisbuk-app.herokuapp.com/api/upload", data);
+        await axios.post(
+          "https://feisbuk-app.herokuapp.com/api/posts/upload",
+          data
+        );
       } catch (err) {}
     }
     try {
@@ -46,9 +49,7 @@ export default function Share() {
           <img
             className="shareProfileImg"
             src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
+              user?.profilePicture || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
             }
             alt=""
           />

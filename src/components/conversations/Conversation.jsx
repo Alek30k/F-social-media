@@ -26,11 +26,7 @@ export default function Conversation({ conversation, currentUser }) {
     <div className="conversation">
       <img
         className="conversationImg"
-        src={
-          user?.profilePicture
-            ? PF + user.profilePicture
-            : PF + "person/noAvatar.png"
-        }
+        src={user?.profilePicture || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
         alt=""
       />
       <span className="conversationName">{user?.username}</span>
