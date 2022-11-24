@@ -6,7 +6,7 @@ import {
   EmojiEmotions,
   Cancel,
 } from "@material-ui/icons";
-import { useContext, useState, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
@@ -22,7 +22,6 @@ export default function Share() {
       userId: user._id,
       desc: desc.current.value,
     };
-
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
@@ -31,11 +30,11 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("https://feisbuk-app.herokuapp.com/api/upload", data);
+        await axios.post("/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("https://feisbuk-app.herokuapp.com/api/posts", newPost);
+      await axios.post("/posts", newPost);
       window.location.reload();
     } catch (err) {}
   };
@@ -75,7 +74,7 @@ export default function Share() {
                 style={{ display: "none" }}
                 type="file"
                 id="file"
-                accept=".png,.jpg,.jpeg"
+                accept=".png,.jpeg,.jpg"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
