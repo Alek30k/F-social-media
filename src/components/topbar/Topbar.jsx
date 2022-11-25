@@ -1,10 +1,9 @@
 import "./topbar.css";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import LogoutIcon from "@material-ui/icons/ExitToAppOutlined";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Logout } from "../../context/AuthActions";
 
 export default function Topbar() {
@@ -12,7 +11,6 @@ export default function Topbar() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpenModal, setIsOpenModal] = useState(false);
   const history = useHistory();
-  const [friends, setFriends] = useState("");
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -42,11 +40,7 @@ export default function Topbar() {
         <div className="searchbar">
           <Search className="searchIcon" />
 
-          <input
-            placeholder="Search on Feisbuk"
-            className="searchInput"
-            onChange={(e) => setFriends(e.target.value)}
-          />
+          <input placeholder="Search on Feisbuk" className="searchInput" />
         </div>
       </div>
       <div className="topbarRight">
