@@ -41,6 +41,7 @@ export default function Topbar() {
       <div className="topbarCenter">
         <div className="searchbar">
           <Search className="searchIcon" />
+
           <input
             placeholder="Search on Feisbuk"
             className="searchInput"

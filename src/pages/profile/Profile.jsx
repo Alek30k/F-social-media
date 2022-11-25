@@ -42,9 +42,8 @@ export default function Profile() {
               <img
                 className="profileUserImg"
                 src={
-                  user.profilePicture
-                    ? PF + user.profilePicture
-                    : PF + "person/noAvatar.png"
+                  user?.profilePicture ||
+                  "https://i.ibb.co/MBtjqXQ/no-avatar.gif"
                 }
                 alt=""
               />
