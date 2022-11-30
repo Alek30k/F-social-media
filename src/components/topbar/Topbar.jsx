@@ -10,6 +10,7 @@ export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [OpenModalFriends, setOpenModalFriends] = useState(false);
   const history = useHistory();
 
   const openModal = () => {
@@ -20,13 +21,25 @@ export default function Topbar() {
     setIsOpenModal(false);
   };
 
+  const closeModalFriends = () => {
+    setOpenModalFriends(false);
+  };
+
   const handleModalDialogClick = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleModalDialogClickk = (e) => {
     e.stopPropagation();
   };
 
   const handleLogout = () => {
     dispatch(Logout());
     history.push("/login");
+  };
+
+  const handleClickFriends = () => {
+    setOpenModalFriends(true);
   };
 
   return (
@@ -49,10 +62,11 @@ export default function Topbar() {
           <span className="topbarLink">TimeLine</span>
         </div>
         <div className="topbarIcons">
-          <div className="topbarIconItem">
+          <div className="topbarIconItem" onClick={handleClickFriends}>
             <Person />
             <span className="topbarIconBadge">1</span>
           </div>
+
           <Link
             to="/messenger"
             style={{ textDecoration: "none", color: "white" }}
