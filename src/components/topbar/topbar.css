@@ -191,6 +191,12 @@
   margin-bottom: 15px;
 }
 
+.sidebarFriendd {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 .sidebarFriendImg {
   width: 32px;
   height: 32px;
@@ -199,6 +205,20 @@
   object-fit: cover;
   margin-right: 10px;
   cursor: pointer;
+}
+
+.sidebarFriendImgg {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.sidebarFriendNamee {
+  color: black;
 }
 
 @media (max-width: 767px) {

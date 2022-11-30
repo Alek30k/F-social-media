@@ -5,12 +5,15 @@ import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext, useState } from "react";
 import { Logout } from "../../context/AuthActions";
+import { useEffect } from "react";
+import axios from "axios";
 
 export default function Topbar() {
   const { user, dispatch } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [OpenModalFriends, setOpenModalFriends] = useState(false);
+  const [friends, setFriends] = useState([]);
   const history = useHistory();
 
   const openModal = () => {
@@ -42,6 +45,20 @@ export default function Topbar() {
     setOpenModalFriends(true);
   };
 
+  useEffect(() => {
+    const fetchFriends = async () => {
+      try {
+        const res = await axios.get(
+          "https://feisbuk-app.herokuapp.com/api/users/alls"
+        );
+        setFriends(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFriends();
+  }, []);
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -66,7 +83,33 @@ export default function Topbar() {
             <Person />
             <span className="topbarIconBadge">1</span>
           </div>
-
+          <div
+            className={`modalFriends ${
+              OpenModalFriends && "modal-openFriends"
+            }`}
+            onClick={closeModalFriends}
+          >
+            <div className="modal__dialogg" onClick={handleModalDialogClickk}>
+              <div className="avatarName">
+                <div className="containerAvatar">
+                  <div>
+                    {friends.map((friend) => {
+                      <div>
+                        {friend.username}
+                        <img
+                          src={friend.profilePicture}
+                          alt=""
+                          className="topbarImg"
+                        />
+                        {friend.username}
+                      </div>;
+                    })}
+                  </div>
+                  ;
+                </div>
+              </div>
+            </div>
+          </div>
           <Link
             to="/messenger"
             style={{ textDecoration: "none", color: "white" }}
