@@ -20,7 +20,7 @@ export default function Post({ post }) {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(
-        `https://feisbuk-app.herokuapp.com/api/users?userId=${post.userId}`
+        `https://b-social-media-production.up.railway.app/api/users?userId=${post.userId}`
       );
       setUser(res.data);
     };
@@ -30,7 +30,9 @@ export default function Post({ post }) {
   const likeHandler = () => {
     try {
       axios.put(
-        "https://feisbuk-app.herokuapp.com/api/posts/" + post._id + "/like",
+        "https://b-social-media-production.up.railway.app/api/posts/" +
+          post._id +
+          "/like",
         { userId: currentUser._id }
       );
     } catch (err) {}

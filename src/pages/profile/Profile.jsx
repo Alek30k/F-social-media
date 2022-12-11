@@ -15,7 +15,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(
-        `https://feisbuk-app.herokuapp.com/api/users?username=${username}`
+        `https://b-social-media-production.up.railway.app/api/users?username=${username}`
       );
       setUser(res.data);
     };

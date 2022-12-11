@@ -49,7 +49,7 @@ export default function Topbar() {
     const fetchFriends = async () => {
       try {
         const res = await axios.get(
-          "https://feisbuk-app.herokuapp.com/api/users/alls"
+          "https://b-social-media-production.up.railway.app/api/users/alls"
         );
         setFriends(res.data);
       } catch (error) {

@@ -12,7 +12,8 @@ export default function Conversation({ conversation, currentUser }) {
     const getUser = async () => {
       try {
         const res = await axios(
-          "https://feisbuk-app.herokuapp.com/api/users?userId=" + friendId
+          "https://b-social-media-production.up.railway.app/api/users?userId=" +
+            friendId
         );
         setUser(res.data);
       } catch (error) {

@@ -22,7 +22,7 @@ export default function Register() {
       };
       try {
         await axios.post(
-          "https://feisbuk-app.herokuapp.com/api/auth/register",
+          "https://b-social-media-production.up.railway.app/api/auth/register",
           user
         );
         history.push("/login");

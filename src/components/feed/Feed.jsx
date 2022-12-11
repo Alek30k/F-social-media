@@ -13,10 +13,12 @@ export default function Feed({ username }) {
     const fetchPosts = async () => {
       const res = username
         ? await axios.get(
-            "https://feisbuk-app.herokuapp.com/api/posts/profile/" + username
+            "https://b-social-media-production.up.railway.app/api/posts/profile/" +
+              username
           )
         : await axios.get(
-            "https://feisbuk-app.herokuapp.com/api/posts/timeline/" + user._id
+            "https://b-social-media-production.up.railway.app/api/posts/timeline/" +
+              user._id
           );
       // setPosts(res.data);
       setPosts(
