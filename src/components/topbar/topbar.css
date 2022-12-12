@@ -97,10 +97,6 @@
   cursor: pointer;
 }
 
-.containerAvatar {
-  margin-left: 45px;
-}
-
 .modal {
   width: 100vw;
   height: 100vh;
@@ -128,9 +124,10 @@
   background-color: rgb(252, 252, 252);
   border-radius: 10px;
   border: 1px solid rgb(231, 228, 228);
-  width: 300px;
-  height: 425px;
-  margin: 17% -10%;
+  width: 200px;
+  height: 350px;
+  margin: 18% -10%;
+  padding: 20px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -161,20 +158,36 @@
 
 .avatarName {
   display: flex;
-  align-items: center;
-  padding: 10px 0;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 20px 0;
   cursor: pointer;
+  color: black;
 }
 
-.avatarName:hover {
-  background-color: #f1ecec;
+.friends {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.friendsImg {
+  margin-right: 10px;
+}
+
+.friends:hover {
+  background-color: #e2dddd;
+  width: 50%;
+  border-radius: 5px;
 }
 
 .modalFriends {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  top: 0;
+  top: 15px;
   left: 0px;
   z-index: 999;
   display: none;

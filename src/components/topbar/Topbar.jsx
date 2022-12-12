@@ -91,22 +91,27 @@ export default function Topbar() {
           >
             <div className="modal__dialogg" onClick={handleModalDialogClickk}>
               <div className="avatarName">
-                <div className="containerAvatar">
-                  <div>
-                    {friends.map((friend) => {
-                      <div>
-                        {friend.username}
-                        <img
-                          src={friend.profilePicture}
-                          alt=""
-                          className="topbarImg"
-                        />
-                        {friend.username}
-                      </div>;
-                    })}
-                  </div>
-                  ;
-                </div>
+                {friends.map((f) => {
+                  return (
+                    <div>
+                      <Link
+                        to={`profile/${f.username}`}
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        <div className="friends">
+                          <div className="friendsImg">
+                            <img
+                              src={f.profilePicture}
+                              alt=""
+                              className="topbarImg"
+                            />
+                          </div>
+                          <div>{f.username}</div>
+                        </div>
+                      </Link>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -163,6 +168,7 @@ export default function Topbar() {
                 </div>
               </div>
             </Link>
+
             {isOpenModal && (
               <div className="modalAvatar" onClick={handleLogout}>
                 <LogoutIcon />
