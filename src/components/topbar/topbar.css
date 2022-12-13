@@ -118,6 +118,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .modal__dialogg {
@@ -146,14 +147,9 @@
   font-size: 18px;
   font-weight: 500;
   color: rgb(26, 19, 19);
-  padding: 20px 0;
   cursor: pointer;
   justify-content: center;
   gap: 10px;
-}
-
-.modalAvatar:hover {
-  background-color: #f1ecec;
 }
 
 .avatarName {
@@ -179,7 +175,7 @@
 
 .friends:hover {
   background-color: #e2dddd;
-  width: 50%;
+  width: 70%;
   border-radius: 5px;
 }
 
