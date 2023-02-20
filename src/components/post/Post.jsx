@@ -62,19 +62,23 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post?.desc}</span>
-          <img className="postImg" src={PF + post.img} alt="" />
+          <img
+            className="postImg"
+            src={"https://feisbuk.onrender.com/images/" + post.img}
+            alt=""
+          />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
             <img
               className="likeIcon"
-              src={`${PF}like.png`}
+              src={`${"https://feisbuk.onrender.com/images/"}like.png`}
               alt=""
               onClick={likeHandler}
             />
             <img
               className="likeIcon"
-              src={`${PF}heart.png`}
+              src={`${"https://feisbuk.onrender.com/images/"}heart.png`}
               alt=""
               onClick={likeHandler}
             />
