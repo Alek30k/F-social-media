@@ -4,7 +4,7 @@ export const loginCall = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });
   try {
     const res = await axios.post(
-      "https://b-social-media-production.up.railway.app/api/auth/login",
+      "https://feisbuk.onrender.com/api/auth/login",
       userCredential
     );
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });

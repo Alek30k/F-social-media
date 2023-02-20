@@ -49,8 +49,7 @@ export default function Messenger() {
     const getConversations = async () => {
       try {
         const res = await axios.get(
-          "https://b-social-media-production.up.railway.app/api/conversations/" +
-            user._id
+          "https://feisbuk.onrender.com/api/conversations/" + user._id
         );
         setConversations(res.data);
       } catch (err) {
@@ -64,8 +63,7 @@ export default function Messenger() {
     const getMessages = async () => {
       try {
         const res = await axios.get(
-          "https://b-social-media-production.up.railway.app/api/messages/" +
-            currentChat?._id
+          "https://feisbuk.onrender.com/api/messages/" + currentChat?._id
         );
         setMessages(res.data);
       } catch (err) {
@@ -95,7 +93,7 @@ export default function Messenger() {
 
     try {
       const res = await axios.post(
-        "https://b-social-media-production.up.railway.app/api/messages",
+        "https://feisbuk.onrender.com/api/messages",
         message
       );
       setMessages([...messages, res.data]);

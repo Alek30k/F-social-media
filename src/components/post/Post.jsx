@@ -20,7 +20,7 @@ export default function Post({ post }) {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(
-        `https://b-social-media-production.up.railway.app/api/users?userId=${post.userId}`
+        `https://feisbuk.onrender.com/api/users?userId=${post.userId}`
       );
       setUser(res.data);
     };
@@ -30,9 +30,7 @@ export default function Post({ post }) {
   const likeHandler = () => {
     try {
       axios.put(
-        "https://b-social-media-production.up.railway.app/api/posts/" +
-          post._id +
-          "/like",
+        "https://feisbuk.onrender.com/api/posts/" + post._id + "/like",
         { userId: currentUser._id }
       );
     } catch (err) {}

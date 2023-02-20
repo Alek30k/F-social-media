@@ -10,8 +10,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   useEffect(() => {
     const getFriends = async () => {
       const res = await axios.get(
-        "https://b-social-media-production.up.railway.app/api/users/friends/" +
-          currentId
+        "https://feisbuk.onrender.com/api/users/friends/" + currentId
       );
       setFriends(res.data);
     };
@@ -26,7 +25,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentChat }) {
   const handleClick = async (user) => {
     try {
       const res = await axios.get(
-        `https://b-social-media-production.up.railway.app/api/conversations/find/${currentId}/${user._id}`
+        `https://feisbuk.onrender.com/api/conversations/find/${currentId}/${user._id}`
       );
       setCurrentChat(res.data);
     } catch (err) {

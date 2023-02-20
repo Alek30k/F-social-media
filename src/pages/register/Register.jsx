@@ -22,7 +22,7 @@ export default function Register() {
       };
       try {
         await axios.post(
-          "https://b-social-media-production.up.railway.app/api/auth/register",
+          "https://feisbuk.onrender.com/api/auth/register",
           user
         );
         history.push("/login");

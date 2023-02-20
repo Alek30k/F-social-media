@@ -12,8 +12,7 @@ export default function Conversation({ conversation, currentUser }) {
     const getUser = async () => {
       try {
         const res = await axios(
-          "https://b-social-media-production.up.railway.app/api/users?userId=" +
-            friendId
+          "https://feisbuk.onrender.com/api/users?userId=" + friendId
         );
         setUser(res.data);
       } catch (error) {

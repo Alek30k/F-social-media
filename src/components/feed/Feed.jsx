@@ -13,12 +13,10 @@ export default function Feed({ username }) {
     const fetchPosts = async () => {
       const res = username
         ? await axios.get(
-            "https://b-social-media-production.up.railway.app/api/posts/profile/" +
-              username
+            "https://feisbuk.onrender.com/api/posts/profile/" + username
           )
         : await axios.get(
-            "https://b-social-media-production.up.railway.app/api/posts/timeline/" +
-              user._id
+            "https://feisbuk.onrender.com/api/posts/timeline/" + user._id
           );
       // setPosts(res.data);
       setPosts(

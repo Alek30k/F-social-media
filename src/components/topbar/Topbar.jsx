@@ -49,7 +49,7 @@ export default function Topbar() {
     const fetchFriends = async () => {
       try {
         const res = await axios.get(
-          "https://b-social-media-production.up.railway.app/api/users/alls"
+          "https://feisbuk.onrender.com/api/users/alls"
         );
         setFriends(res.data);
       } catch (error) {
@@ -93,7 +93,7 @@ export default function Topbar() {
               <div className="avatarName">
                 {friends.map((f) => {
                   return (
-                    <div>
+                    <div key={f._id}>
                       <Link
                         to={`profile/${f.username}`}
                         style={{ textDecoration: "none", color: "black" }}
